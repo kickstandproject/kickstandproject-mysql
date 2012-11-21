@@ -1,7 +1,7 @@
 define mysql::function::database(
 ) {
   exec { "create-${name}-db":
-    command => "mysql -uroot -e \"create database ${name};\"",
+    command => "mysql --defaults-file=/root/.my.cnf -uroot -e \"create database ${name};\"",
     require => Class['mysql::server::service'],
   }
 }
