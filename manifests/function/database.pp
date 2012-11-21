@@ -1,4 +1,4 @@
-define database(
+define mysql::function::database(
 ) {
   exec { "create-${name}-db":
     command => "mysql -uroot -e \"create database ${name};\"",
