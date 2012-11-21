@@ -1,0 +1,6 @@
+fixtures:
+  repositories:
+    'apt': 'git://github.com/kickstandproject/kickstandproject-apt.git'
+    'stdlib': 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
+  symlinks:
+    'mysql': '#{source_dir}'
