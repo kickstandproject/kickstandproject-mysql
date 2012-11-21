@@ -12,7 +12,7 @@ class mysql::params {
   }
 
   $hasstatus = $::operatingsystem ? {
-    default => false,
+    default => true,
   }
 
   $mode = $::operatingsystem ? {

@@ -44,7 +44,7 @@ describe 'mysql::server' do
       should contain_service('mysql').with({
         'ensure'     => 'running',
         'enable'     => true,
-        'hasstatus'  => false,
+        'hasstatus'  => true,
         'hasrestart' => true,
       })
     end
