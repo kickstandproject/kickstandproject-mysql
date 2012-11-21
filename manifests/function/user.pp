@@ -2,11 +2,9 @@ define mysql::function::user(
   $password,
   $host = 'localhost'
 ) {
-  $sql = "mysql --defaults-file=/root/.my.cnf -uroot -e \"CREATE USER '${name}'@'${host}' IDENTIFIED BY '${password}';\""
-
-  exec { $sql:
+  exec { "create-user-${name}@${host}":
+    command => "mysql --defaults-file=/root/.my.cnf -uroot -e \"CREATE USER '${name}'@'${host}' IDENTIFIED BY '${password}';\"",
     require => Class['mysql::server::service'],
-    onlyif  => "mysql --defaults-file=/root/.my.cnf -uroot -NBe \"SELECT '1' FROM mysql.user WHERE CONCAT(user, '@', host) = '${name}'@${host}';\""
   }
 }
 
