@@ -2,7 +2,9 @@ define mysql::function::user(
   $password,
   $host = 'localhost'
 ) {
-  exec { "mysql --defaults-file=/root/.my.cnf -uroot -e \"create user '${name}'@'${host}' identified by PASSWORD '${password}';\"":
+  $sql = "mysql --defaults-file=/root/.my.cnf -uroot -e \"CREATE USER '${name}'@'${host}' IDENTIFIED BY '${password}';\"":
+
+  exec { $sql:
     require => Class['mysql::server::service'],
   }
 }
