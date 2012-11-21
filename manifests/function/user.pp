@@ -6,6 +6,7 @@ define mysql::function::user(
 
   exec { $sql:
     require => Class['mysql::server::service'],
+    onlyif  => "mysql --defaults-file=/root/.my.cnf -uroot -NBe \"SELECT '1' FROM mysql.user WHERE CONCAT(user, '@', host) = '${name}'@${host}';\""
   }
 }
 
